@@ -760,6 +760,10 @@ Prefab:
       propertyPath: m_Name
       value: Piloteer
       objectReference: {fileID: 0}
+    - target: {fileID: 138036, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
   m_IsPrefabParent: 0
