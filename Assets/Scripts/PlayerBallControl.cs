@@ -5,6 +5,10 @@ using InControl;
 public class PlayerBallControl : PlayerComponent 
 {
 	Ball _currentBall = null;
+	public Ball currentBall
+	{
+		get { return _currentBall; }
+	}
 
 	[SerializeField] float _catchCooldownTime = 1f; // Time until we can pick up the ball again
 	float _catchCooldownTimer = 0f;
@@ -21,6 +25,8 @@ public class PlayerBallControl : PlayerComponent
 
 	[SerializeField] float _ballFollowSpeed = 10f;
 
+	[SerializeField] bool _debugCanShoot = true;
+
 	// Shooting
 	bool _isShooting = false;
 	public bool isShooting
@@ -33,6 +39,14 @@ public class PlayerBallControl : PlayerComponent
 	[SerializeField] float _maxShootTime = 1.5f;
 	float _shootTimer = 0f;
 
+	// Stealing
+	[SerializeField] float _stealCooldownTime = 0.7f;
+	float _stealCooldownTimer = 0f;
+
+	[SerializeField] float _stealCheckRadius = 1.5f;
+	[SerializeField] LayerMask _playerLayer = 0;
+
+	// Input
 	InputDevice _inputDevice = null;
 
 	void Awake()
@@ -45,19 +59,26 @@ public class PlayerBallControl : PlayerComponent
 	{
 		if( _currentBall )
 		{
-			if( _inputDevice.Action3.WasPressed )
+			if( _debugCanShoot )
 			{
-				_isShooting = true;
-				_shootTimer = 0f;
-			}
+				if( _inputDevice.Action3.WasPressed )
+				{
+					_isShooting = true;
+					_shootTimer = 0f;
+				}
 
-			if( _isShooting && _inputDevice.Action3.WasReleased )
-			{
-				// TODO: Clamp these to character specific angles
-				ShootBall( _inputDevice.LeftStick.Vector, _shotForceRange.Lerp( _shootTimer/_maxShootTime ) );
+				if( _isShooting && _inputDevice.Action3.WasReleased )
+				{
+					// TODO: Clamp these to character specific angles
+					ShootBall( _inputDevice.LeftStick.Vector, _shotForceRange.Lerp( _shootTimer/_maxShootTime ) );
 
-				_isShooting = false;
+					_isShooting = false;
+				}
 			}
+		}
+		else if( _inputDevice.Action3.WasPressed && _stealCooldownTimer > _stealCooldownTime )
+		{
+			AttemptSteal();
 		}
 	}
 
@@ -81,6 +102,7 @@ public class PlayerBallControl : PlayerComponent
 			_currentBall.transform.position = Vector3.Lerp( _currentBall.transform.position, transform.position + Vector3.up * _currentBallHeightOffset, Time.deltaTime * _ballFollowSpeed );
 		}
 
+		_stealCooldownTimer += Time.deltaTime;
 		_catchCooldownTimer += Time.deltaTime;
 	}
 
@@ -91,6 +113,46 @@ public class PlayerBallControl : PlayerComponent
 			Ball ball = other.transform.GetComponent<Ball>();
 			if( ball )
 			{
+				CatchBall( ball );
+			}
+		}
+	}
+
+	void AttemptSteal()
+	{
+		_stealCooldownTimer = 0f;
+
+		Collider2D[] nearbyPlayerColliders = Physics2D.OverlapCircleAll( transform.position, _stealCheckRadius, _playerLayer );
+		if( nearbyPlayerColliders.Length > 0 )
+		{
+			PlayerBallControl closestBallHolder = null;
+			float closestBallHolderDistance = Mathf.Infinity;
+			foreach( Collider2D collider2D in nearbyPlayerColliders )
+			{
+				PlayerBallControl ballHolder = collider2D.GetComponent<PlayerBallControl>();
+				if( ballHolder && ballHolder != this )
+				{
+					if( closestBallHolder )
+					{
+						float ballHolderDistance = Vector3.Distance( closestBallHolder.transform.position, transform.position );
+						if( ballHolderDistance < closestBallHolderDistance )
+						{
+							closestBallHolder = ballHolder;
+							closestBallHolderDistance = ballHolderDistance;
+						}
+					}
+					else
+					{
+						closestBallHolder = ballHolder;
+						closestBallHolderDistance = Vector3.Distance( closestBallHolder.transform.position, transform.position );
+					}
+				}
+			}
+
+			if( closestBallHolder && closestBallHolder.currentBall )
+			{
+				Ball ball = closestBallHolder.currentBall;
+				closestBallHolder.DropBall();
 				CatchBall( ball );
 			}
 		}
@@ -115,14 +177,18 @@ public class PlayerBallControl : PlayerComponent
 		_currentBall = null;
 
 		_shootTimer = 0f;
+		_stealCooldownTimer = 0f;
 		_catchCooldownTimer = 0f;
 	}
 
 	void DropBall()
 	{
+		_isShooting = false;
+
 		_currentBall.OnRelease();
 		_currentBall = null;
 
+		_stealCooldownTimer = 0f;
 		_catchCooldownTimer = 0f;
 	}
 }

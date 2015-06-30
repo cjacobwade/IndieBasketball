@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 // Make a subclass of this class with T as the subclass to make a singleton
-public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
+public class SingletonBehaviour<T> : WadeBehaviour where T : MonoBehaviour
 {
     private static T _instance = null;
 

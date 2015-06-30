@@ -1,21 +1,15 @@
 fileFormatVersion: 2
-guid: 32f44dae93160443dba8ef696f522c92
-timeCreated: 1435637845
+guid: 6c61d4192563b43c9a3cb8ff9c3798cd
+timeCreated: 1435637888
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: OctodadIdle_01
-    21300002: OctodadWalk_01
-    21300004: OctodadWalk_02
-    21300006: OctodadWalk_03
-    21300008: OctodadWalk_04
-    21300010: OctodadJump_01
-    21300012: OctodadIdle_01
-    21300014: OctodadWalk_01
-    21300016: OctodadWalk_02
-    21300018: OctodadWalk_03
-    21300020: OctodadWalk_04
-    21300022: OctodadJump_01
+    21300000: PiloteerIdle_01
+    21300002: PiloteerWalk_01
+    21300004: PiloteerWalk_02
+    21300006: PiloteerWalk_03
+    21300008: PiloteerWalk_04
+    21300010: PiloteerJump_01
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -61,63 +55,63 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: OctodadIdle_01
+    - name: PiloteerIdle_01
       rect:
         serializedVersion: 2
         x: 4
         y: 0
-        width: 10
-        height: 15
+        width: 9
+        height: 14
       alignment: 9
-      pivot: {x: .400000006, y: 0}
+      pivot: {x: .439999998, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OctodadWalk_01
+    - name: PiloteerWalk_01
       rect:
         serializedVersion: 2
         x: 17
         y: 0
         width: 13
-        height: 15
+        height: 14
       alignment: 9
       pivot: {x: .529999971, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OctodadWalk_02
+    - name: PiloteerWalk_02
       rect:
         serializedVersion: 2
         x: 35
         y: 0
-        width: 11
-        height: 15
+        width: 9
+        height: 14
       alignment: 9
-      pivot: {x: .469999999, y: 0}
+      pivot: {x: .560000002, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OctodadWalk_03
+    - name: PiloteerWalk_03
       rect:
         serializedVersion: 2
         x: 52
         y: 0
-        width: 10
-        height: 15
+        width: 8
+        height: 14
       alignment: 9
-      pivot: {x: .409999996, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OctodadWalk_04
+    - name: PiloteerWalk_04
       rect:
         serializedVersion: 2
         x: 67
         y: 0
-        width: 11
-        height: 15
+        width: 9
+        height: 14
       alignment: 9
-      pivot: {x: .460000008, y: 0}
+      pivot: {x: .550000012, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OctodadJump_01
+    - name: PiloteerJump_01
       rect:
         serializedVersion: 2
         x: 81
         y: 0
         width: 14
-        height: 16
+        height: 15
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

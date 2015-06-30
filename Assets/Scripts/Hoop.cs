@@ -4,10 +4,16 @@ using System.Collections.Generic;
 
 public class Hoop : MonoBehaviour 
 {
-	public Transform scoreTransform = null;
-	List<Collider2D> _collidables = new List<Collider2D>();
+	[SerializeField] int _teamNum = 0;
 
-	[SerializeField] float _scoreCooldownTime = 0.4f;
+	Transform _scoreTransform = null;
+	public Transform scoreTransform
+	{
+		get { return _scoreTransform; }
+	}
+
+	List<Collider2D> _collidables = new List<Collider2D>();
+	
 	Coroutine _noScoreRoutine = null;
 
 	[SerializeField] float _minResetDistance = 2f;
@@ -17,9 +23,9 @@ public class Hoop : MonoBehaviour
 	{
 		foreach( Collider2D collider2D in GetComponentsInChildren<Collider2D>() )
 		{
-			if( collider2D.isTrigger )
+			if( !collider2D.isTrigger )
 			{
-				scoreTransform = collider2D.transform;
+				_scoreTransform = collider2D.transform;
 			}
 			else
 			{
@@ -64,7 +70,7 @@ public class Hoop : MonoBehaviour
 	{
 		if( _noScoreRoutine == null )
 		{
-			Debug.Log( "Legit score!" );
+			ScoreManager.instance.Score( _teamNum, 2 ); // TODO: Make this work with 3 pointers
 			_noScoreRoutine = StartCoroutine( TemporaryNoScoreRoutine() );
 		}
 	}
