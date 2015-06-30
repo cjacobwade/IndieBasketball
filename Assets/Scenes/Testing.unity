@@ -1035,10 +1035,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9567926, guid: 22abf9dd19d0e4b379d20d93d26f1ca1, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22abf9dd19d0e4b379d20d93d26f1ca1, type: 2}
   m_IsPrefabParent: 0
@@ -1316,30 +1312,6 @@ Prefab:
     - target: {fileID: 457262, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 138036, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: m_Name
-      value: Octodad
-      objectReference: {fileID: 0}
-    - target: {fileID: 138036, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11479188, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403234, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: _playerLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403234, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: _stealCheckRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 435362, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 235808cb3bbbe432793b5e3d34507f7d, type: 2}

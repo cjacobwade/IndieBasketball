@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .538999975, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457262}
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.80000019, y: -3.0999999, z: 0}
+  m_LocalPosition: {x: -2.28999996, y: -3.0999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435362}
@@ -101,9 +101,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: .519999981}
+  m_Offset: {x: 0, y: .620000005}
   serializedVersion: 2
-  m_Size: {x: .479999989, y: .529999971}
+  m_Size: {x: .479999989, y: .620000005}
 --- !u!95 &9572888
 Animator:
   serializedVersion: 3
@@ -141,10 +141,16 @@ MonoBehaviour:
     min: .100000001
     max: .430000007
   _ballFollowSpeed: 20
+  _debugCanShoot: 1
   _shotForceRange:
     min: 13
     max: 20
   _maxShootTime: 1.5
+  _stealCooldownTime: .699999988
+  _stealCheckRadius: 1
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &11403636
 MonoBehaviour:
   m_ObjectHideFlags: 1

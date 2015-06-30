@@ -51,6 +51,8 @@ public class PlayerPhysics : PlayerComponent
 
 			animator.SetBool( "isGrounded", _grounded );
 
+			// TODO: Probably should move this out to a function that can be overriden in derived class (like Piloteer)
+
 			if( _grounded || _lateJumpTimer < _lateJumpTime )
 			{
 				if( _inputDevice.Action1.WasPressed )
